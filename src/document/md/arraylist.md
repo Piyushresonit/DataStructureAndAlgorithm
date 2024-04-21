@@ -19,8 +19,6 @@
   * It first checks whether the new element has room to fill or it needs to grow the size of the internal array 
   * If capacity has to be increased then the new capacity is calculated which is 50% more than the old capacity and the array is increased by that capacity.
 
-![img](https://github.com/Piyushresonit/JavaFeature/blob/master/src/document/images/Intermediate_operation.png)
-
 ## Internal working of an ArrayList
 
 The array buffer into which the elements of the ArrayList are stored.
