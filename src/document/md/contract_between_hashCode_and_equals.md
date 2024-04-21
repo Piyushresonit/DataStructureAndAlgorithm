@@ -133,4 +133,4 @@ public class EqualAndHashcodeContract {
     v2 hashcode => 32
 
 ---
-[HOME](C:\StudyMaterial\Java\Codebase\DataStructure\README.md)
+[HOME](https://github.com/Piyushresonit/DataStructureAndAlgorithm/blob/master/README.md)

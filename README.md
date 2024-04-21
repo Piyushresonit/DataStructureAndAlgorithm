@@ -57,11 +57,11 @@
 ## Java Map Hierarchy
 ![img](/src/document/images/map_interface.png)
 
-1. [Contract between hashCode() and equals()](C:\StudyMaterial\Java\Codebase\DataStructure\src\document\md\contract_between_hashCode_and_equals.md)
-2. [Comparable and Comparator Interfaces](C:\StudyMaterial\Java\Codebase\DataStructure\src\document\md\Comparable_Comparator_Interfaces.md)
-3. [Collections Methods](C:\StudyMaterial\Java\Codebase\DataStructure\src\document\md\Collections_Method.md)
-4. [Generics](C:\StudyMaterial\Java\Codebase\DataStructure\src\document\md\Generics.md)
-5. [ShallowCopyVsDeepCopy](C:\StudyMaterial\Java\Codebase\DataStructure\src\document\md\ShallowCopyVsDeepCopy.md)
+1. [Contract between hashCode() and equals()](src/document/md/contract_between_hashCode_and_equals.md)
+2. [Comparable and Comparator Interfaces](src/document/md/Comparable_Comparator_Interfaces.md)
+3. [Collections Methods](src/document/md/Collections_Method.md)
+4. [Generics](src/document/md/Generics.md)
+5. [ShallowCopyVsDeepCopy](src/document/md/ShallowCopyVsDeepCopy.md)
 6. [Array](src/document/md/array.md)
-7. [ArrayList](C:\StudyMaterial\Java\Codebase\DataStructure\src\document\md\arraylist.md)
-8. [LinkedList](C:\StudyMaterial\Java\Codebase\DataStructure\src\document\md\linkedlist.md)
+7. [ArrayList](src/document/md/arraylist.md)
+8. [LinkedList](src/document/md/linkedlist.md)

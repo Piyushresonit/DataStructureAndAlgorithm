@@ -101,4 +101,4 @@ for (String element : list) {
 #### Output
     Ram Laxman Sita Bharat Karn 
 ---
-[HOME](C:\StudyMaterial\Java\Codebase\DataStructure\README.md)
+[HOME](https://github.com/Piyushresonit/DataStructureAndAlgorithm/blob/master/README.md)

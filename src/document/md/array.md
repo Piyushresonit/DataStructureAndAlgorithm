@@ -157,5 +157,5 @@ private static int secondMaxArrayElement(int[] arr) {
     Second Largest Element: 400
 
 ---
-[HOME](C:\StudyMaterial\Java\Codebase\DataStructure\README.md)<br>
-[Array LeetCode](C:\StudyMaterial\Java\Codebase\DataStructure\src\document\md\array_leetcode.md)
+[HOME](https://github.com/Piyushresonit/DataStructureAndAlgorithm/blob/master/README.md)<br>
+[Array LeetCode](array_leetcode.md)
