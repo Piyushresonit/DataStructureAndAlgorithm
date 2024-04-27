@@ -10,7 +10,7 @@
 * Use `Collections.synchronizedList(new LinkedList())` to get synchronized LinkedList. 
 * The **iterators** returned by this class are **fail-fast** and may throw `ConcurrentModificationException`.
 * Implements **Serializable** and **Cloneable** interfaces.
-* **Manipulation** is **faster than** the LinkedList because  **no shifting** needs to occur if any **element is removed** from the linked list.
+* **Manipulation** is **faster than** the ArrayList because  **no shifting** needs to occur if any **element is removed** from the linked list.
 * **No Random Access**: It accesses elements in sequential order only.
 * We can use **ListIterator** to iterate LinkedList elements.
 * **Worst** Choice: **Random Access** / **Retrival**
@@ -97,12 +97,32 @@ LinkedList has Head Node, Tail Node and size instance variable which consist of 
 
 ```java
 // 2. Create Linked list
-static class CustomLinkedList<T extends Comparable<T>> {
-  Node head;  // head of list
-  Node tail;  // tail of list
-  int size;
+static class CustomLinkedList<T extends Comparable<T>> { 
+   Node head;  // head of list
+   Node tail;  // tail of list
+   int size;
+
+   public void displayList() {
+      Node node = head;
+      while (node != null) {
+         System.out.print(node.data + " --> ");
+         node = node.next;
+      }
+      System.out.print("null\n");
+   }
+
+   public int getSize() {
+      return size;
+   }
 }
 ```
+
+```java
+public static void main(String[] args) {
+    CustomLinkedList list = new CustomLinkedList();
+}
+```
+![img](../images/linkedlist.png)
 
 ## Add an element in a LinkedList
 
@@ -126,6 +146,8 @@ public void addFirst(T data) {
     size++;
 }
 ```
+![img](../images/addfirst_linkedlist.png)
+
 ### AddLast in a LinkedList 
  	Inserts a new node at the end.
 1. Allocate the Node and Add the data
@@ -149,6 +171,8 @@ public void addLast(T data) {
     size++;
 }
 ```
+![img](../images/addlast_linkedlist.png)
+
 ### AddAt in a LinkedList
     Add a new node after the given index.
 1. Allocate the Node and Add the data
@@ -188,8 +212,162 @@ public void addAt(int index, T newData) {
     }
 }
 ```
+![img](../images/addat_linkedlist.png)
+
 ## Remove element from a LinkedList
 
+### RemoveAt in a LinkedList
+      Remove a Node at index given.
 
+1. If index >= 0 and index <= size, 
+   1. If index is equal to 0 
+      1. removeFirst(); 
+   2. else If index is equal to (size -1)
+      1. removeLast(); 
+   3. else 
+      1. Make a temp node using head. 
+      2. Traverse temp node 0 to index - 2 
+         1. make temp = temp.next; 
+      3. Make next of temp as next of next of temp 
+      4. decrease size by 1
+2. Else List is empty
+
+```java
+public void removeAt(int index) {
+    if (index >= 0 || index < size) {
+        if (index == 0) {
+            removeFirst();
+        }
+        if (index == size - 1) {
+            removeLast();
+        } else {
+            Node temp = head;
+            for (int i = 0; i < index - 1; i++) {
+                temp = temp.next;
+            }
+            temp.next = temp.next.next;
+            size--;
+        }
+    } else {
+        throw new IllegalArgumentException("invalid argument or list is empty");
+    }
+}
+```
+![img](../images/removeat_linkedlist.png)
+
+### RemoveFirst in a LinkedList
+      Remove a Node from front of the list.
+
+1. If size > 0, 
+   1. If size is equal to 1 
+      1. Make head = tail = null 
+   2. else 
+      1. make head = head.next; 
+   3. decrease size by 1
+2. Else List is empty
+
+```java
+public void removeFirst() {
+    if (size > 0) {
+        if (size == 1) {
+            head = null;
+            tail = null;
+        } else {
+            head = head.next;
+        }
+        size--;
+    } else {
+        throw new IllegalArgumentException("LinkedList is empty");
+    }
+}
+```
+![img](../images/removefirst_linkedlist.png)
+
+### RemoveLast in a LinkedList
+      Remove a Node from tail of the list.
+
+1. If size > 0,
+   1. If size is equal to 1
+      1. Make head = tail = null
+   2. else
+      1. make head = head.next;
+   3. decrease size by 1
+2. Else List is empty
+
+```java
+public void removeFirst() {
+    if (size > 0) {
+        if (size == 1) {
+            head = null;
+            tail = null;
+        } else {
+            head = head.next;
+        }
+        size--;
+    } else {
+        throw new IllegalArgumentException("LinkedList is empty");
+    }
+}
+```
+![img](../images/removelast_linkedlist.png)
+
+### GetFirst node data in a LinkedList
+      Get the first/head node data if list is not empty
+
+```java
+public T getFirst() {
+    if (size > 0) {
+        return (T) head.data;
+    } else {
+        throw new IllegalArgumentException("LinkedList is empty");
+    }
+}
+```
+
+### GetLast node data in a LinkedList 
+      Get the last/tail node data if list is not empty
+
+```java
+public T getLast() {
+    if (size > 0) {
+        return (T) tail.data;
+    } else {
+        throw new IllegalArgumentException("LinkedList is empty");
+    }
+}
+```
+
+### GetAt node data in a LinkedList 
+      Get at index node data if list is not empty and index <= size
+
+```java
+public T getAt(int index) {
+    if (index > 0 && index <= size) {
+        Node node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return (T) node.data;
+    } else {
+        throw new IllegalArgumentException("invalid Index or list is empty");
+    }
+}
+```
+### GetNodeAt node data in a LinkedList
+      Get node at index itself else null will retrun
+
+```java
+private Node getNodeAt(int index) {
+    if (index > 0 && index <= size) {
+        Node temp = head;
+        for (int i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        return temp;
+    } else {
+        throw new IllegalArgumentException("invalid Index or list is empty");
+    }
+}
+```
 ---
 [HOME](https://github.com/Piyushresonit/DataStructureAndAlgorithm/blob/master/README.md)

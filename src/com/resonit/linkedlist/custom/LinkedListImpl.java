@@ -136,25 +136,28 @@ public class LinkedListImpl {
             }
         }
 
-        public int getAt(int index) {
+        public T getAt(int index) {
             if (index > 0 && index <= size) {
                 Node node = head;
                 for (int i = 0; i < index; i++) {
                     node = node.next;
                 }
-                return (int) node.data;
+                return (T) node.data;
             } else {
-                System.out.println("invalid Index or list is empty");
-                return -1;
+                throw new IllegalArgumentException("invalid Index or list is empty");
             }
         }
 
         private Node getNodeAt(int index) {
-            Node temp = head;
-            for (int i = 0; i < index; i++) {
-                temp = temp.next;
+            if (index > 0 && index <= size) {
+                Node temp = head;
+                for (int i = 0; i < index; i++) {
+                    temp = temp.next;
+                }
+                return temp;
+            } else {
+                throw new IllegalArgumentException("invalid Index or list is empty");
             }
-            return temp;
         }
 
         public void reverseListDataIterative() {
@@ -163,7 +166,6 @@ public class LinkedListImpl {
             int right = size - 1;
 
             while (left < right) {
-
                 Node leftNode = getNodeAt(left);
                 Node rightNode = getNodeAt(right);
 
@@ -187,9 +189,9 @@ public class LinkedListImpl {
                 curr = temp;
             }
 
-            Node t = head;
-            head = tail;
-            tail = t;
+            // After the reversal, adjust head and tail references
+            tail = head; // Now the former tail becomes the new head
+            head = prev; // The last node (prev) becomes the new tail
         }
 
         /* This function prints contents of linked list starting from the given node */

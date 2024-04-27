@@ -77,7 +77,7 @@ private static void deepCopyPrimitive() {
 }
 ```
 #### Output
-    Original array Employee First name: Rajesh
-    Shallow copied array Employee First name: Rajesh
+    Original array Employee First name: Ravi
+    Shallow copied array Employee First name: Lokesh
 ---
 [HOME](https://github.com/Piyushresonit/DataStructureAndAlgorithm/blob/master/README.md)

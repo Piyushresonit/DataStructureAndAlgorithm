@@ -57,11 +57,33 @@
 ## Java Map Hierarchy
 ![img](/src/document/images/map_interface.png)
 
+### Fail-Fast Iterators - `ConcurrentModificationException`
+* **Fail-Fast**: If the list is structurally modified at any time after the iterator is created, in any way except through the Iterators own methods, 
+the iterator will throw `ConcurrentModificationException`
+* Fail-Fast iterators use an internal flag called `modCount` which is updated each time a collection is modified.
+* Fail-fast iterators check this flag while calling `next()` method to retrieve next value and if it finds that `modCount` changed after iterator being created, 
+it throws `ConcurrentModificationException`.
+
+#### Advantage: 
+Fail-Fast mechanism provides a proactive approach to detect and handle **concurrent modifications** during iteration, 
+enhancing the reliability and robustness of programs, **maintaining data consistency** and preventing unintended side effects caused by concurrent access and modification of collections.
+
+## Appendices
+* **Serializable**: It is a marker interface that classes must implement if they are to be serialized and deserialized.
+* **Cloneable**: This is an interface in Java which needs to be implemented by a class to allow its objects to be cloned.
+* **Iterable<E>**: This interface represents a collection of objects which is iterable — meaning which can be iterated.
+* **Collection<E>**: A Collection represents a group of objects known as its elements. The Collection interface is used to pass around collections of objects where maximum generality is desired.
+* **List<E>**: The List interface provides a way to store the ordered collection. It is a child interface of Collection.
+* **RandomAccess**: This is a marker interface used by List implementations to indicate that they support fast (generally constant time) random access.
+
 1. [Contract between hashCode() and equals()](src/document/md/contract_between_hashCode_and_equals.md)
-2. [Comparable and Comparator Interfaces](src/document/md/Comparable_Comparator_Interfaces.md)
-3. [Collections Methods](src/document/md/Collections_Method.md)
-4. [Generics](src/document/md/Generics.md)
-5. [ShallowCopyVsDeepCopy](src/document/md/ShallowCopyVsDeepCopy.md)
+2. [Comparable and Comparator Interfaces](src/document/md/comparable_comparator_interfaces.md)
+3. [Collections Methods](src/document/md/collections_method.md)
+4. [Generics](src/document/md/generics.md)
+5. [ShallowCopyVsDeepCopy](src/document/md/shallowcopy_vs_deepcopy.md)
 6. [Array](src/document/md/array.md)
 7. [ArrayList](src/document/md/arraylist.md)
 8. [LinkedList](src/document/md/linkedlist.md)
+8. [Stack](src/document/md/stack.md)
+8. [Stack LinkedList Implementation](src/document/md/stackLinkedListImpl.md)
+8. [HashMap](src/document/md/HashMap.md)

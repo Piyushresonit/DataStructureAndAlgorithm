@@ -1,6 +1,7 @@
 # ArrayList    
 
 > A resizable array implementation in java. 
+
 * Backing data structure - an **Dynamic Growable array** of Object class with **no size limit**.
 * **Duplicates allowed** – We can add duplicate elements in ArrayList. 
 * **Null Insertion Allowed**. 
@@ -58,6 +59,7 @@ static class ArrayList {
   }
 }
 ```
+![img](../images/empty_arraylist.png)
 
 ### Add element in an ArrayList
 * ArrayList automatically resizes (grow) itself whenever a number of elements in ArrayList grow beyond a threshold 
@@ -74,7 +76,9 @@ public void add(int element){
     }
     array[size++] = element;
 }
-
+```
+![img](../images/add_arraylist.png)
+```java
 private void resize(int minCapacity) {
     int newCapacity = capacity + minCapacity;
 
@@ -86,9 +90,11 @@ private void resize(int minCapacity) {
     capacity = newCapacity;
 }
 ```
+![img](../images/resize_array.png)
+
 ### Remove element in an ArrayList
 * Since an **ArrayList is indexed**, this method takes an integer value which simply **removes** the **element** present at that specific **index**. 
-* **After removing** the element, **all the elements are moved to the left** to fill the space and the indices of the objects are updated.
+* **Bit shuffling**: **After removing** the element, **all the elements are moved to the left** to fill the space and the indices of the objects are updated.
 * Automatically **resizes** (shrink) itself whenever a number of elements in ArrayList shrink beyond a threshold (for example memory of 75% less than current size).
 * When the array size becomes half of the capacity and if we try to remove an item:
   * Creates a smaller-sized memory on heap memory (for example memory of 50% less than current size).
@@ -110,6 +116,7 @@ public Object removeAtIndex(int index) {
     }
     Object data = array[index];
     if (index >= 0 && index <= size - 1) {
+        // Bit shuffling is required after removing the element
         Object[] temp = new Object[size - 1];
         for (int i = 0; i < index; i++) {
             temp[i] = array[i];
@@ -126,6 +133,6 @@ public Object removeAtIndex(int index) {
     return data;
 }
 ```
-
+![img.png](../images/bitshuffeling_resize_array.png)
 ---
 [HOME](https://github.com/Piyushresonit/DataStructureAndAlgorithm/blob/master/README.md)

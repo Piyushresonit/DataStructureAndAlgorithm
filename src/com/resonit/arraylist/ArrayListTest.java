@@ -16,6 +16,5 @@ public class ArrayListTest {
         for (Employee emp: employeeList) {
             System.out.println(emp);
         }
-
     }
 }

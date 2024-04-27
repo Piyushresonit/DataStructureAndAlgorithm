@@ -5,7 +5,7 @@
 * Arrays are **ordered** and each have an **index** beginning from '**0**'.
 * Arrays can also be **static**, **final** or used as **method arguments**.
 * The size of an array must be specified by an int or short value and not long.
-* Java arrays are implements **Cloneable** and **Serializable** interfaces.
+* Java arrays are implements `Cloneable` and `Serializable` interfaces.
 * The direct **superclass** of an array type is **Object**
 * Array can contain **primitives** as well as **object references** of a class.
   * In case of primitive data types, the actual values are stored in **contiguous memory locations**.
@@ -76,7 +76,7 @@ int[] arrTemp = arr;
 arrTemp[2] = 200;
 
 for (int i = 0; i < arr.length; i++) {
-    System.out.println("New Array element at " + i +" is " + arr[i]);
+    System.out.println("Old Array element at " + i +" is " + arr[i]);
 }
 for (int i = 0; i < arr.length; i++) {
     System.out.println("New Array element at " + i +" is " + arrTemp[i]);
