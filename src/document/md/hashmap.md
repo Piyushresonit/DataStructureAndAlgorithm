@@ -98,7 +98,7 @@ public int hashCode() {
       HashMap(int initialCapacity, float loadFactor)
       HashMap(Map map)
 
-## Methods of LinkedList
+## Methods of HashMap
 
 | **Method**                                                                             | **Description**                                                                                                                                                                             |
 |----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -120,6 +120,218 @@ public int hashCode() {
 | size()                                                                                 | Returns the **number of key-value mappings** in this map.                                                                                                                                       |
 | values()                                                                               | Returns a **Collection view of the values** contained in this map.                                                                                                                              |
 
+### HashMap Operations
+| **Method**         | **Key Exist** | **Key Not-Exist** |
+|--------------------|---------------|-------------------|
+| **put(k,v)**       | update        | insert            |
+| **get(k)**         | value         | null              |
+| **containsKey(k)** | TRUE          | FALSE             |
+| **remove(k)**      | value         | null              |
+| **size**           | size          | -1                |
+| **keyset**         | ArrayList<k>  | null              |
+
 # Internal working of a HashMap
+
+### Initially Empty HashMap
+![img.png](../images/hashmap.png)
+
+* Here, the HashMap’s initial capacity is taken as 16. 
+> CAPACITY as bucket size.
+
+> Size of the empty Hashmap is Zero
+
+```java
+static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;
+
+Map<Employee, Integer> hashMap = new HashMap<>();
+System.out.println("Size of an Empty HashMap: " + hashMap.size()); // 0
+```
+![img_1.png](../images/empty_hashmap.png)
+
+### Inserting Key-Value Pair
+* Putting one key-value pair in the above HashMap
+```java
+Employee employee1 = new Employee("Piyush");
+hashMap.put(employee1, 20);
+```
+#### Output:
+    System.out.println(employee1.hashCode()); // -1903944663
+    System.out.println(Math.abs(employee1.hashCode()) % 16); // 9
+
+Steps:
+1. Calculate hash code of Employee {“Piyush”}. It will be generated as -1903944663.
+2. Calculate index by using index method it will be 9.
+3. Create a node object as:
+```java
+{   
+    int hash = 9;
+    // {"Piyush"} is not a string but an object of class Employee
+    Employee key = {"Piyush"};
+    Integer value = 20;
+    Node next = null;
+}
+```
+4. Place this object at index 9, if no other object is presented there.
+
+![img.png](../images/put_key_hashmap.png)
+
+### Inserting another Key-Value Pair
+* Now, putting the other pair, if no other object is present there.
+
+```java
+Employee employee2 = new Employee("Sameer");
+hashMap.put(employee2, 25);
+```
+#### Output:
+    System.out.println(employee2.hashCode()); // -1825818670
+    System.out.println(Math.abs(employee2.hashCode()) % 16); // 2
+
+Steps:
+1. Calculate hash code of Employee {“Sameer”}. It will be generated as -1825818670.
+2. Calculate index by using index method it will be 2.
+3. Create a node object as:
+```java
+{ 
+    int hash = 2;
+    Employee key = {"Sameer"};
+    Integer value = 25;
+    Node next = null;
+}
+```
+4. Place this object at index 2, if no other object is present there.
+
+![img.png](../images/put_another_key_hashmap.png)
+
+### In Case of collision: Different key
+* Now, putting the other pair index 6, if no other object is presented there.
+
+```java
+Employee employee3 = new Employee("Vinay");
+hashMap.put(employee3, 30);
+```
+#### Output:
+    System.out.println(employee3.hashCode()); // 82659730
+    System.out.println(Math.abs(employee3.hashCode()) % 16); // 2
+
+Steps:
+1. Calculate hash code of Employee {“Vinay”}. It will be generated as 82659730. 
+2. Calculate index by using index method it will be 2. 
+3. Create a node object as:
+```java
+{
+    int hash = 2;
+    Employee key = {"Vinay"};
+    Integer value = 30;
+    Node next = null;
+}
+```
+4. Place this object at index 2, if no other object is present there.
+5. In this case, a node object is found at index 2 – this is a case of **collision**.
+   1. In that case, check via the hashCode() and equals() method if both the keys are the same. 
+   2. If keys are the same, replace the value with the current value.
+   3. Otherwise, connect this node object to the previous node object via linked list and both are stored at index 2. (Satisfied this case)
+
+![img.png](../images/collision_diffkey_hashmap.png)
+
+### In Case of collision: Same key
+* Now, putting the other pair index 6, if no other object is presented there.
+```java
+Employee employee4 = new Employee("Piyush");
+hashMap.put(employee4, 35);
+```
+#### Output:
+    System.out.println(employee4.hashCode()); // -1903944663
+    System.out.println(Math.abs(employee3.hashCode()) % 16); // 9
+
+Steps:
+1. Calculate hash code of Employee {“Piyush”}. It will be generated as -1903944663.
+2. Calculate index by using index method it will be 9.
+3. Create a node object as:
+```java
+{
+    int hash = 9;
+    Employee key = {"Piyush"};
+    Integer value = 35;
+    Node next = null;
+}
+```
+4. Place this object at index 9, if no other object is presented there.
+5. In this case, a node object is found at index 9 – this is a case of collision. 
+6. In that case, check via the hashCode() and equals() method if both the keys are the same. 
+   1. If keys are the same, replace the value with the current value. (Satisfied this case)
+
+![img.png](../images/collision_samekey_hashmap.png)
+
+### Index Using the get():
+
+* get(“key”) method is used to get a value by its key. 
+* If you don’t know the key then it is not possible to fetch a value. presented
+
+Fetch the data for key: “Piyush”
+
+```java
+System.out.println(hashMap.get(new Employee("Piyush"))); // 35
+```
+Steps:
+* Calculate hash code of Key {“Piyush”}. It will be generated as -1903944663.
+* Calculate index by using index method it will be 9.
+* Go to index 9 of the array and compare the first element’s key with the given key.
+* If both are equals then return the value, otherwise, check for the next element if it exists.
+* In our case, it is found as the first element and the returned value is 35
+
+
+Fetch the data for key: “Vinay”
+```java
+System.out.println(hashMap.get(new Employee("Vinay"))); // 30
+```
+Steps:
+* Calculate hash code of Key {“Vinay”}. It will be generated as 82659730.
+* Calculate index by using index method it will be 2.
+* Go to index 2 of the array and compare the first element’s key with the given key.
+* If both are equals then return the value, otherwise, check for the next element if it exists.
+* In our case, it is not found as the first element and the next node object is not null.
+* If the next node is null then return null.
+* If the next of node is not null traverse to the second element and repeat process 3 until the key is not found or next is not null.
+* When getting an object with its key, the linked list is traversed until the key matches or null is found on the next field.
+* Time complexity is almost constant for the put and the get method until rehashing is not done.
+
+## Improvements of Hash Collision / hash function is not distributing keys properly after Java 8:
+
+* Hash collision degrades the performance of HashMap significantly. 
+* Hash collisions have negative impact on the lookup time of HashMap. 
+* When multiple keys end up in the same bucket, then values along with their keys are placed in a linked list. 
+* In case of retrieval, linked list has to be traversed to get the entry.
+* In worst case scenario, when all keys are mapped to the same bucket, the lookup time of HashMap increases from O(1)  O(n).
+
+### Java 8 improvements/changes of HashMap objects in case of high collisions:
+* The alternative String hash function added in Java 7 has been removed.
+* Buckets containing a large number of colliding keys will store their entries in a balanced red black tree instead of a linked list after certain `TREEIFY_THRESHOLD` is reached.
+* `TREEIFY_THRESHOLD` When a single bucket reaches this (and the total number exceeds `MIN_TREEIFY_CAPACITY`), it is transformed into a perfectly balanced red black tree node.
+* `MIN_TREEIFY_CAPACITY` is the minimum number of buckets before a certain bucket is transformed into a Tree.
+```java
+static final int TREEIFY_THRESHOLD = 8;
+static final int MIN_TREEIFY_CAPACITY = 64;
+```
+* Above changes ensure performance of O(log(n)) in worst case scenarios (hash function is not distributing keys properly) and O(1) with proper hashCode().
+
+### How linked list is replaced with balanced red black tree / binary tree?
+
+* In Java 8, HashMap replaces linked list with a balanced red black tree when the number of elements in a bucket reaches certain threshold. 
+* While converting the list to balanced red black tree, hashcode is used as a branching variable. 
+* It is first sorted by hash code. 
+* If there are two different hashcodes in the same bucket, one is considered bigger and goes to the right of the tree and other one to the left. 
+* But when both the hashcodes are equal, HashMap assumes that the keys are comparable, and compares the key to determine the direction so that some order can be maintained. 
+* it uses the `compareTo()` of Comparable if the objects implement that interface, else the identity hash code.
+* It is a good practice to make the **keys of HashMap Comparable**.
+* This JDK 8 change applies only to `HashMap`, `LinkedHashMap` and `ConcurrentHashMap`.
+
+### How balanced red black tree replaced with linked list on Removal of objects?
+
+* If entries are removed from the map, the number of entries in the bucket might reduce such that this tree structure is no longer necessary. 
+* `UNTREEIFY_THRESHOLD` is the minimum number of buckets before a certain bucket is transformed back into a LinkedList.
+
+```java
+  static final int UNTREEIFY_THRESHOLD = 6;
+```
 ---
 [HOME](https://github.com/Piyushresonit/DataStructureAndAlgorithm/blob/master/README.md)
