@@ -53,7 +53,7 @@ System.out.println("o3 hashcode => " + o3.hashCode());
 
 Hash codes from Java's `Object.hashCode()` are of type int, you can only have 232 different values.
 That's why you will have so-called "collisions" depending on the hashing algorithm.
-Typically, this does not produce any problems, because hashCode() is mostly used together with equals(). 
+Typically, this does not produce any problems, because `hashCode()` is mostly used together with `equals()`. 
 <br>
 Example:<br> 
 **HashMap** will call `hashCode()` upon its keys, to know whether the keys may already be contained in the HashMap. 
@@ -89,7 +89,7 @@ public class EqualAndHashcodeContract {
     }
 }
 ```
-##### Output:
+#### Output:
     v1.equals(v2) => false
     v1 hashcode => 1023892928
     v2 hashcode => 558638686

@@ -1,6 +1,6 @@
 # Stack    
 
-> last-in-first-out (LIFO) stack of objects.
+> Last-in-first-out (LIFO) stack of objects.
 
 * It extends class Vector with five operations (push, pop, peek, search, empty)
 * Implements Interfaces: Serializable, Cloneable, Iterable<E>, Collection<E>, List<E>, RandomAccess
@@ -87,7 +87,6 @@ public static void main(String[] args) {
   * Delete the old memory.
 
 ### Push an element in a Stack
-
     Inserts (Push) an element onto the stack peek.
 
   1. Increase peek size by 1
@@ -169,7 +168,7 @@ public boolean empty() {
 }
 ```
 ### Search element in a Stack 
-      Returns the position of the element from the Peek(top) of the stack. Else, it returns -1.
+    Returns the position of the element from the Peek(top) of the stack. Else, it returns -1.
 
 ```java
 public int search(Object element) {

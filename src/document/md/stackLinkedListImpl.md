@@ -40,7 +40,6 @@ public static void main(String[] args) {
 ```
 
 ### Push an element in a Stack
-
     Inserts (Push) an element onto the stack peek (Head of LinkedList).
 
 ```java

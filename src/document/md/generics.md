@@ -71,9 +71,9 @@ while(itr.hasNext()){
 }
 ```
 #### Output
-    1 vijay<br>
-    2 ankit<br> 
-    4 umesh<br>
+    1 vijay
+    2 ankit 
+    4 umesh
 
 ## Generic class
 **A class** that can refer to **any type** is known as a **generic class**.
@@ -147,10 +147,9 @@ We are using here **E** to denote **the element**.
 ```
 
 #### Output
-
-    Printing Integer Array<br>
-    10 20 30 40 50<br>
-    Printing Character Array<br>
+    Printing Integer Array
+    10 20 30 40 50
+    Printing Character Array
     R E S O N I T
 
 ## Wildcard in Java Generics
@@ -204,7 +203,6 @@ public class TestGenerics {
 }
 ```
 #### Output
-
     drawing rectangle
     drawing circle
 
@@ -216,7 +214,6 @@ public class TestGenerics {
 * or implements (in case of, interface) keyword, followed by its upper bound.
 
 #### **Syntax:**
-
     List<? extends Number>  
 Here,**<br>**
 ? is a wildcard character.<br>
@@ -254,7 +251,6 @@ In this example, we are using the upper bound wildcards to write the method for 
     }
 ```
 #### Output
-
     displaying the sum= 30.0
     displaying the sum= 70.0
 

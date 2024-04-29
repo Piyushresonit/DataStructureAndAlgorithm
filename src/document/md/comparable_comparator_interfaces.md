@@ -1,5 +1,7 @@
 # Comparable and Comparator Interfaces
 
+> The Comparable interface is used to define how a class is to be sorted.
+
 | **Comparable**                                                                                                                                  | **Comparator**                                                                                                                                            |
 |---------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Comparable provides a **single sorting sequence**. We can sort the collection on the basis of a single element such as id, name, and price. | The Comparator provides **multiple sorting sequences**. We can sort the collection on the basis of multiple elements such as id, name, and price etc. |
