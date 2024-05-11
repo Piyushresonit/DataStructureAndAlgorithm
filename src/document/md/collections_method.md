@@ -64,7 +64,7 @@ for (String element : list) {
 #### Output
     Two Three One Four Five  
 
-### Collections.sort()
+### Collections.swap()
 >Swap the elements of specified list of collection based on indexes.
 ```java
 // Swap the elements of specified list of collection based on indexes.

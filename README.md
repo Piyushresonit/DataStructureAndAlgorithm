@@ -86,4 +86,4 @@ enhancing the reliability and robustness of programs, **maintaining data consist
 8. [LinkedList](src/document/md/linkedlist.md)
 8. [Stack](src/document/md/stack.md)
 8. [Stack LinkedList Implementation](src/document/md/stackLinkedListImpl.md)
-8. [HashMap](src/document/md/HashMap.md)
+8. [HashMap](src/document/md/hashmap.md)
